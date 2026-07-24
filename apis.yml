@@ -1,8 +1,30 @@
 aid: bluebirds
+accessModel:
+  pricing: unknown
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Requires approval
+  confidence: medium
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bluebirds.png
 name: Bluebirds
-description: Bluebirds is a company surfaced as a portfolio company of lightspeed-venture-partners and
-  added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Bluebirds is an AI-powered outbound sales and go-to-market (GTM) prospecting
+  platform, founded in 2022 by Rohan Punamia (CEO) and Kunal Punera (CTO). The
+  product helps sales teams create, test, and scale AI-driven prospecting
+  triggers, letting representatives target and personalize outreach in a unified
+  workflow so they reach the right personas with the right message at the right
+  time. Bluebirds was seed-funded by Lightspeed Venture Partners (invested 2023).
+  As of July 2026 the primary domain bluebirds.com 301-redirects to Salesforce's
+  AI prospecting agent page, indicating the Bluebirds team and technology have
+  been absorbed into Salesforce. Bluebirds exposes no public developer or API
+  surface — no docs, developer, api, status, or trust subdomains resolve, and the
+  application host (app.bluebirds.com) is login-gated behind bot protection — so
+  this profile is identity-only and carries no API artifacts.
 url: https://raw.githubusercontent.com/api-evangelist/bluebirds/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,14 +32,39 @@ x-backed-by:
 - lightspeed-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: acquired-absorbed
+x-note: >-
+  bluebirds.com 301-redirects to https://www.salesforce.com/sales/prospecting/agent/
+  (observed 2026-07-18); no public API/developer surface found during enrichment.
+x-founded: '2022'
+x-founders:
+- Rohan Punamia (CEO, Co-Founder)
+- Kunal Punera (Co-Founder, CTO)
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
+- Sales
+- Go-To-Market
+- Prospecting
+- Sales Intelligence
+- Outbound Sales
+- Artificial Intelligence
+- SaaS
+- Lead Generation
 apis: []
+common:
+- type: Website
+  url: https://bluebirds.com
+  x-note: 301-redirects to Salesforce's AI prospecting agent page as of 2026-07-18
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
