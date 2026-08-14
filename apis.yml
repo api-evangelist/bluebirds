@@ -13,18 +13,23 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bluebirds.png
 name: Bluebirds
 description: >-
-  Bluebirds is an AI-powered outbound sales and go-to-market (GTM) prospecting
+  Bluebirds was an AI-powered outbound sales and go-to-market (GTM) prospecting
   platform, founded in 2022 by Rohan Punamia (CEO) and Kunal Punera (CTO). The
-  product helps sales teams create, test, and scale AI-driven prospecting
-  triggers, letting representatives target and personalize outreach in a unified
-  workflow so they reach the right personas with the right message at the right
-  time. Bluebirds was seed-funded by Lightspeed Venture Partners (invested 2023).
-  As of July 2026 the primary domain bluebirds.com 301-redirects to Salesforce's
-  AI prospecting agent page, indicating the Bluebirds team and technology have
-  been absorbed into Salesforce. Bluebirds exposes no public developer or API
-  surface — no docs, developer, api, status, or trust subdomains resolve, and the
-  application host (app.bluebirds.com) is login-gated behind bot protection — so
-  this profile is identity-only and carries no API artifacts.
+  product helped sales teams create, test, and scale AI-driven prospecting
+  triggers, combining LinkedIn signals with first-party CRM data and
+  de-anonymized web traffic so representatives could target and personalize
+  outreach in a unified workflow. Bluebirds was seed-funded by Lightspeed
+  Venture Partners (invested 2023). Salesforce announced a definitive agreement
+  to acquire Bluebirds in August 2025 and folded the prospecting agent into
+  Sales Cloud and Agentforce, with integration expected complete by the end of
+  Salesforce fiscal Q3 2026. The absorption is now complete: as of August 2026
+  every path on bluebirds.com — including /pricing, /docs and every
+  /.well-known/ path — answers HTTP 301 to Salesforce's AI prospecting agent
+  page from an AWS redirect service, api./docs./developer./status./trust
+  subdomains do not resolve, and the former application host app.bluebirds.com
+  resolves but resets the TLS handshake. Bluebirds therefore exposes no public
+  developer or API surface of its own; the prospecting capability is now reached
+  through Salesforce, and this profile is identity-only.
 url: https://raw.githubusercontent.com/api-evangelist/bluebirds/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -33,16 +38,22 @@ x-backed-by:
 x-tier: stub
 x-tier-reason: portfolio-lead
 x-status: acquired-absorbed
+x-acquired-by: salesforce
+x-acquisition-announced: '2025-08'
 x-note: >-
-  bluebirds.com 301-redirects to https://www.salesforce.com/sales/prospecting/agent/
-  (observed 2026-07-18); no public API/developer surface found during enrichment.
+  Acquired by Salesforce — definitive agreement announced August 2025, product
+  integrated into Sales Cloud / Agentforce. bluebirds.com issues a blanket HTTP
+  301 to https://www.salesforce.com/sales/prospecting/agent/ for every path
+  (re-observed 2026-08-13); app.bluebirds.com resolves (34.36.90.25) but resets
+  TLS; api./docs./developer./status./trust.bluebirds.com are NXDOMAIN. No public
+  API, spec, package, MCP server or agent card exists on any Bluebirds host.
 x-founded: '2022'
 x-founders:
 - Rohan Punamia (CEO, Co-Founder)
 - Kunal Punera (Co-Founder, CTO)
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Sales
@@ -55,16 +66,42 @@ tags:
 - Lead Generation
 apis: []
 common:
+- type: DomainSecurity
+  url: security/bluebirds-domain-security.yml
 - type: Website
   url: https://bluebirds.com
-  x-note: 301-redirects to Salesforce's AI prospecting agent page as of 2026-07-18
+  x-note: >-
+    Blanket 301 to https://www.salesforce.com/sales/prospecting/agent/ on every
+    path; re-observed 2026-08-13.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 3
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Full STEP 0b contract discovery re-run against every Bluebirds host; no
+    OpenAPI, GraphQL, MCP, agent card, package or well-known document exists.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Salesforce completed its acquisition of Bluebirds and every path on
+    bluebirds.com — including /openapi.json, /llms.txt, /pricing and every
+    /.well-known/ path — now answers a blanket HTTP 301 to Salesforce's AI
+    prospecting agent page from an AWS redirect service, while the former app
+    host app.bluebirds.com resolves but resets the TLS handshake.
+  evidence:
+  - url: https://bluebirds.com/openapi.json
+    status: 301
+  - url: https://bluebirds.com/.well-known/agent-card.json
+    status: 301
+  - url: https://bluebirds.com/pricing
+    status: 301
+  - url: https://app.bluebirds.com/
+    status: 0
+  checked: '2026-08-13'
