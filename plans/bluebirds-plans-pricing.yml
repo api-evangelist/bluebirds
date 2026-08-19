@@ -1,0 +1,18 @@
+generated: '2026-08-13'
+method: probed
+source: https://bluebirds.com/pricing
+plan_count: 0
+note: >-
+  Bluebirds publishes no pricing or plans page. Salesforce acquired Bluebirds
+  (announced August 2025, integration into Sales Cloud and Agentforce expected
+  complete by the end of Salesforce fiscal Q3 2026) and the company no longer
+  operates an independent commercial surface. Every path on bluebirds.com,
+  including /pricing, answers HTTP 301 to
+  https://www.salesforce.com/sales/prospecting/agent/. There is no plan,
+  quota, or overage to record — this is an honest zero, not an unread page.
+plans: []
+evidence:
+- url: https://bluebirds.com/pricing
+  status: 301
+  redirect: https://www.salesforce.com/sales/prospecting/agent/
+  checked: '2026-08-13'

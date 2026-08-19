@@ -1,0 +1,69 @@
+generated: '2026-08-13'
+method: probed
+source: live probes of every Bluebirds host resolvable on 2026-08-13
+note: >-
+  Recorded absence. No /.well-known/ document is served by any Bluebirds host.
+  bluebirds.com and www.bluebirds.com are an AWS redirect service (server:
+  redirectv2) that answers HTTP 301 to
+  https://www.salesforce.com/sales/prospecting/agent/ for EVERY path, including
+  every /.well-known/ path — a blanket redirect, not a served document. The
+  application host app.bluebirds.com still has an A record (34.36.90.25, Google
+  Cloud) but the TLS handshake is reset before any HTTP request completes, so no
+  path on it could be probed. api./docs./developer./status./trust.bluebirds.com
+  do not resolve (NXDOMAIN). No WellKnown or SecurityTxt pointer is emitted:
+  nothing here is a document.
+hosts:
+- host: bluebirds.com
+  reachable: true
+  behavior: blanket 301 redirect to www.salesforce.com for all paths
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/api-catalog
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+  - path: /.well-known/agent.json
+    status: 301
+    redirect: https://www.salesforce.com/sales/prospecting/agent/
+    document: false
+- host: app.bluebirds.com
+  reachable: false
+  behavior: >-
+    DNS resolves to 34.36.90.25 but TLS handshake is reset
+    (SSL_ERROR_SYSCALL); no HTTP request completes
+  documents: []
+- host: api.bluebirds.com
+  reachable: false
+  behavior: NXDOMAIN
+  documents: []
+- host: docs.bluebirds.com
+  reachable: false
+  behavior: NXDOMAIN
+  documents: []
+- host: developer.bluebirds.com
+  reachable: false
+  behavior: NXDOMAIN
+  documents: []
+summary:
+  documents_served: 0
+  hosts_probed: 5
+  hosts_reachable: 1
