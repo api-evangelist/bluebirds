@@ -89,6 +89,8 @@ tags_raw:
 - Lead Generation
 apis: []
 common:
+- type: Plans
+  url: plans/bluebirds-plans-pricing.yml
 - type: DomainSecurity
   url: security/bluebirds-domain-security.yml
 - type: Website
